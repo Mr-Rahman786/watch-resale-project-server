@@ -29,6 +29,7 @@ async function run() {
             const query = {};
             const cursor = accsoriesCollection.find(query);
             const accsories = await cursor.toArray();
+            console.log(accsories)
             res.send(accsories)
         })
     }
