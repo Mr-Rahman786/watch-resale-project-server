@@ -70,6 +70,18 @@ async function run() {
             res.send(result)
         })
 
+        app.patch('/orders/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const updatedDoc = {
+                $set: {
+                    status: status
+                }
+            }
+            const result = await orderCollection.updateOne(query, updatedDoc)
+            res.send(result);
+        })
+
         // delete the products will called there
 
         app.delete('/orders/:id', async (req, res) => {
